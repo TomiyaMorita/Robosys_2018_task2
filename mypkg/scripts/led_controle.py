@@ -4,8 +4,8 @@ import rospy
 import std_msgs.msg
 
 GPIO.setmode(GPIO.BOARD)
-gpio_list=[15,16,18,22]
-for i in range(4):
+gpio_list=[13,15,16,18,22]
+for i in range(5):
     GPIO.setup(gpio_list[i], GPIO.OUT)
 
 def callback(data, id):
@@ -23,6 +23,7 @@ def listener():
     led2 = rospy.Subscriber("/led2", std_msgs.msg.Int8, callback, callback_args=2)
     led3 = rospy.Subscriber("/led3", std_msgs.msg.Int8, callback, callback_args=3)
     led4 = rospy.Subscriber("/led4", std_msgs.msg.Int8, callback, callback_args=4)
+    led5 = rospy.Subscriber("/led5", std_msgs.msg.Int8, callback, callback_args=5)
 
     rospy.spin()
 
